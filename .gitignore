@@ -25,3 +25,4 @@ email-listener/processed.json
 Thumbs.db
 email-listener/credentials.json
 email-listener/token.json
+.claude/
