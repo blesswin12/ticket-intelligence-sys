@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m json.tool /home/user/projects/ticket-intelligence-sys/app/ticketdashboard/webapp/manifest.json)"
+    ]
+  }
+}

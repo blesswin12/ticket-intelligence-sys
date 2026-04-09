@@ -1,0 +1,12 @@
+{
+  "name": "approuter",
+  "version": "1.0.0",
+  "description": "App Router for ticket-intelligence-sys",
+  "dependencies": {
+    "@sap/approuter": "^20.0.0",
+    "@sap/html5-app-deployer": "^6.0.0"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/approuter/approuter.js"
+  }
+}   

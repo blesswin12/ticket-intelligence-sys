@@ -1,0 +1,10 @@
+applications:
+- name: ticket-email-listener
+  memory: 256M
+  instances: 1
+  buildpack: nodejs_buildpack
+  command: node index.js
+  env:
+    CAP_API_URL: https://e32c7822trial-dev-ticket-intelligence-sys-srv.cfapps.us10-001.hana.ondemand.com
+    SUPPORT_TAG: "[SUPPORT]"
+    POLL_INTERVAL: "60000"

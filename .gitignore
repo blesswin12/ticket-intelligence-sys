@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build artifacts
+gen/
+mta_archives/
+dist/
+*.mtar
+
+# Sensitive files
+.env
+email-listener/.env
+email-listener/token.json
+email-listener/processed.json
+
+# Logs
+*.log
+
+# SAP BTP temp files
+.ticket-intelligence-sys_mta_build_tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+email-listener/credentials.json
+email-listener/token.json

@@ -1,0 +1,64 @@
+{
+  "name": "ticket-intelligence-sys",
+  "version": "1.0.0",
+  "description": "AI-Powered Customer Support System on SAP BTP",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9",
+    "@sap/xssec": "^4",
+    "axios": "^1.14.0",
+    "dotenv": "^17.4.0",
+    "express": "^4",
+    "googleapis": "^171.4.0",
+    "groq-sdk": "^1.1.2",
+    "nodemailer": "^8.0.4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9",
+    "cds-plugin-ui5": "^0.13.0",
+    "mbt": "^1.2.45",
+    "rimraf": "^5.0.10"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-ticketdashboard": "cds watch --open my.support.ticketdashboard/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy ticket-intelligence-sys --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[development]": {
+        "auth": "dummy",
+        "db": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": ":memory:"
+          }
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa",
+        "db": {
+          "kind": "hana",
+          "deploy-format": "hdbtable"
+        }
+      },
+      "destinations": true,
+      "html5-repo": true,
+      "application-logging": true
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/ticketdashboard"
+  ],
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

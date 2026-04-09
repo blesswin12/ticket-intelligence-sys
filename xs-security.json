@@ -1,0 +1,69 @@
+{
+  "xsappname": "ticket-intelligence-sys",
+  "tenant-mode": "dedicated",
+  "oauth2-configuration": {
+    "token-validity": 43200,
+    "refresh-token-validity": 604800,
+    "redirect-uris": [
+      "https://e32c7822trial-dev-ticket-intelligence-sys.cfapps.us10-001.hana.ondemand.com/login/callback",
+      "https://e32c7822trial-dev-ticket-intelligence-sys.cfapps.us10-001.hana.ondemand.com/**"
+    ],
+    "credential-types": [
+      "binding-secret",
+      "x509"
+    ]
+  },
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Full administrative access"
+    },
+    {
+      "name": "$XSAPPNAME.SupportAgent",
+      "description": "Create, read, update tickets and trigger AI actions"
+    },
+    {
+      "name": "$XSAPPNAME.Viewer",
+      "description": "Read-only access"
+    },
+    {
+      "name": "uaa.user",
+      "description": "UAA user scope"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Full system administrator",
+      "scope-references": ["$XSAPPNAME.Admin", "$XSAPPNAME.SupportAgent", "$XSAPPNAME.Viewer"]
+    },
+    {
+      "name": "SupportAgent",
+      "description": "Can manage tickets and trigger AI actions",
+      "scope-references": ["$XSAPPNAME.SupportAgent", "$XSAPPNAME.Viewer"]
+    },
+    {
+      "name": "Viewer",
+      "description": "Read-only",
+      "scope-references": ["$XSAPPNAME.Viewer"]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "TicketSystem-Admin",
+      "description": "Ticket System Administrator",
+      "role-template-references": ["$XSAPPNAME.Admin"]
+    },
+    {
+      "name": "TicketSystem-SupportAgent",
+      "description": "Ticket System Support Agent",
+      "role-template-references": ["$XSAPPNAME.SupportAgent"]
+    },
+    {
+      "name": "TicketSystem-Viewer",
+      "description": "Ticket System Viewer",
+      "role-template-references": ["$XSAPPNAME.Viewer"]
+    }
+  ]
+}
